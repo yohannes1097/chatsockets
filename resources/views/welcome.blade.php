@@ -97,10 +97,4 @@
             </div>
         </div>
     </body>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script>
-        Echo.channel('home').listen('NewMessage', (e)=>{
-            alert(e.message);
-        });
-    </script>
 </html>

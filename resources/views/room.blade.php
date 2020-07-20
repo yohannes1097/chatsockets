@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
-    <h1>Chat Room</h1>
+    <!-- <?php echo json_encode($room);?> -->
+    <h1>Room : {{ $room->room_name }}</h1>
     <br>
     <div class="row">
        <div class="col-8">
@@ -34,15 +36,12 @@
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
-    Echo.channel('room').listen('NewMessage', (e)=>{
-        alert(e.message);
-    });
     $(document).ready(function(){
         var myUID = {{ $user->id }};
         function getChat(){
             var htmlchat='';
             $.ajax({
-                url:'{{url("chat/get_chat")}}',
+                url:'{{url("chat/get_chat/".$room->id)}}',
                 method:'get',
                 success: function(response){
                     data = $.parseJSON(response);
@@ -59,6 +58,10 @@
                     $('#chatWindow').html(htmlchat);
                 }
             });
+            
+            Echo.join('room.{{$room->id}}').listen('NewMessage', (e)=>{
+                alert(e.message);
+            });
         }
 
         $('#newmessage').keypress(function(event){
@@ -68,7 +71,7 @@
                 var token = $('input[name=_token]').val();
                 // console.log(token);
                 $.ajax({
-                    url:'{{url("chat/post_chat")}}',
+                    url:'{{url("chat/post_chat/".$room->id)}}',
                     method:'post',
                     data:{message:pesan, _token:token},
                     success: function(response){
