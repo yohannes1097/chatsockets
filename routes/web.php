@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Auth\LoginController@login');
-Route::get('/chat/get_chat', 'ChatController@getChat')->middleware('auth');
-Route::post('/chat/post_chat', 'ChatController@postChat')->middleware('auth');
+Route::get('/rooms', 'RoomController@index')->middleware('auth');
+Route::get('/room/{id}', 'RoomController@room')->middleware('auth');
+Route::get('/chat/get_chat/{room_id}', 'ChatController@getChat')->middleware('auth');
+Route::post('/chat/post_chat/{room_id}', 'ChatController@postChat')->middleware('auth');
 
 Auth::routes();
 

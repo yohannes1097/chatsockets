@@ -11,8 +11,8 @@ use App\Chat;
 
 class ChatController extends Controller
 {
-    public function getChat(){
-        $chats = DB::table('chats')->join('users', 'chats.id_pengirim', '=', 'users.id')->get();
+    public function getChat($room_id){
+        $chats = DB::table('chats')->join('users', 'chats.id_pengirim', '=', 'users.id')->where('chats.id_room', $room_id)->get();
         echo json_encode($chats);
     }
 
@@ -23,10 +23,6 @@ class ChatController extends Controller
         $chat->id_pengirim = $user->id;
         $chat->pesan = $Pesan->message;
         $chat->save();
-
-        $message = '{"message":"'.$Pesan->message.'"}';
-        $json = json_encode($message);
-        // broadcast(new NewMessage($json));
         echo 'sukses';
     }
 }

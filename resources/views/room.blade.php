@@ -58,10 +58,6 @@
                     $('#chatWindow').html(htmlchat);
                 }
             });
-            
-            Echo.join('room.{{$room->id}}').listen('NewMessage', (e)=>{
-                alert(e.message);
-            });
         }
 
         $('#newmessage').keypress(function(event){
@@ -71,19 +67,18 @@
                 var token = $('input[name=_token]').val();
                 // console.log(token);
                 $.ajax({
-                    url:'{{url("chat/post_chat/".$room->id)}}',
-                    method:'post',
-                    data:{message:pesan, _token:token},
-                    success: function(response){
-                        console.log(response);
-                        $('#newmessage').val('');
-                        // getChat();
-                    }
-                }); 
+                url:'{{url("chat/post_chat/".$room->id)}}',
+                method:'post',
+                data:{message:pesan, _token:token},
+                success: function(response){
+                    console.log(response);
+                    $('#newmessage').val('');
+                    // getChat();
+                }
+            }); 
             }
         });
         getChat();
     });
-    
 </script>
 @endsection

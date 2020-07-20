@@ -13,13 +13,13 @@ class AddRoomTable extends Migration
      */
     public function up()
     {
-        // Schema::create('rooms', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->unsignedBigInteger('id_creator');
-        //     $table->foreign('id_creator')->references('id')->on('users');
-        //     $table->string('room_name');
-        //     $table->timestamps();
-        // });   
+        Schema::create('rooms', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_creator');
+            $table->foreign('id_creator')->references('id')->on('users');
+            $table->string('room_name');
+            $table->timestamps();
+        });   
     }
 
     /**
