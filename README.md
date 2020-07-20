@@ -1,5 +1,13 @@
 # Realtime chat app using laravel & websockets
 
+## Dummy Account
+- admin | pwdadmin
+- user1 | pwduser1
+- user2 | pwduser2 
+
+## Bugs
+- Laravel Echo can't broadcast event, temporary solution: chat refresh using ajax.
+
 
 ## About Laravel
 

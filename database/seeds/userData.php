@@ -15,6 +15,7 @@ class userData extends Seeder
             'name' => 'admin',
             'email' => 'admin'.'@gmail.com',
             'password' => Hash::make('pwdadmin'),
+            'level' => 'admin',
             'created_at' => '2019-10-19 00:00:00',
             'updated_at' => '2019-10-19 00:00:00',
         ]);
@@ -22,6 +23,7 @@ class userData extends Seeder
             'name' => 'user1',
             'email' => 'user1'.'@gmail.com',
             'password' => Hash::make('pwduser1'),
+            'level' => 'user',
             'created_at' => '2019-10-19 00:00:00',
             'updated_at' => '2019-10-19 00:00:00',
         ]);
@@ -29,6 +31,7 @@ class userData extends Seeder
             'name' => 'user2',
             'email' => 'user2'.'@gmail.com',
             'password' => Hash::make('pwduser2'),
+            'level' => 'user',
             'created_at' => '2019-10-19 00:00:00',
             'updated_at' => '2019-10-19 00:00:00',
         ]);
